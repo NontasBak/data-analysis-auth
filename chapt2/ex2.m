@@ -1,6 +1,6 @@
 clc, clearvars, close all;
 
-N = 10000;
+N = 1000;
 randomNumsUniform = rand(N, 1);
 lambda = 1;
 
