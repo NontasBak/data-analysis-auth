@@ -1,5 +1,5 @@
 function meanAvg = expMeans(lambda, samples, n)
-    X = exprnd(lambda, samples, n);
+    X = exprnd(1 / lambda, samples, n);
     Xmeans = zeros(samples, 1);
     
     for i = 1:samples
