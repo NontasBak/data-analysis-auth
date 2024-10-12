@@ -1,7 +1,5 @@
 clc, clearvars, close all;
 
-mu = 0;
-sigma = 1;
 n = 10;
 M = 100;
 B = 1000;
@@ -17,7 +15,7 @@ end
 mean_bootstrap_X = zeros(B, M);
 ci_bootstrap_X = zeros(2, M);
 
-lower_k = int64((B + 1) * (alpha / 2));
+lower_k = int64((B + 1) * (alpha / 2)); % Convert to int
 upper_k = B + 1 - lower_k;
 
 % Parametric testing

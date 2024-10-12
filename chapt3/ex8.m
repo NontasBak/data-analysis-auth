@@ -1,7 +1,5 @@
 clc, clearvars, close all;
 
-mu = 0;
-sigma = 1;
 n = 10;
 M = 100;
 B = 1000;
