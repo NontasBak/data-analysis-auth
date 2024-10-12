@@ -6,7 +6,7 @@ lambda = 1;
 
 randomNumsExp = (-1/lambda)*log(1-randomNumsUniform);
 
-histogram(randomNumsExp, 'Normalization', 'pdf')
+histfit(randomNumsExp, 30, 'exponential');
 hold on;
 
 x = linspace(0, max(randomNumsExp));
