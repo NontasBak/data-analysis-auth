@@ -32,15 +32,18 @@ for k = 1:length(mu)
         end
         
         sorted_means = sort(mean_bootstrap_X(:, sample));
-        rank_obs_mean = sum(sorted_means <= observed_mean);
+        rank_obs_mean = sum(sorted_means <= observed_mean) + 1;
+
+        % find the bootstrap means that are as extreme or more extreme that
+        % the observed mean (two tailed test)
         p_bootstrap_X(sample) = 2 * min(rank_obs_mean, B + 1 - rank_obs_mean) / (B + 1);
     end
 
     rejection_perc_parametric = sum(p_parametric < alpha) * 100 / M;
     rejection_perc_bootstrap = sum(p_bootstrap_X < alpha) * 100 / M;
 
-    fprintf('Rejection prob. using parametric testing for mu = %.1f: %.f%%\n', mu(k), rejection_perc_parametric);
-    fprintf('Rejection prob. using bootstrap for mu = %.1f: %.f%%\n\n', mu(k), rejection_perc_bootstrap);
+    fprintf('Rejection prob. using parametric testing for mu=%.1f: %.f%%\n', mu(k), rejection_perc_parametric);
+    fprintf('Rejection prob. using bootstrap for mu=%.1f: %.f%%\n\n', mu(k), rejection_perc_bootstrap);
 end
 
 
