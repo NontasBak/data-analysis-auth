@@ -4,7 +4,7 @@ n = 10;
 M = 100;
 B = 1000;
 alpha = 0.05;
-part_b = true; % Change to true for part b
+part_b = false; % Change to true for part b
 
 ci_bootstrap = zeros(2, M);
 ci_parametric = zeros(2, M);
