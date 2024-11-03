@@ -72,8 +72,8 @@ h2 = [48, 60, 50, 75, 56];
 
 h1_std = std(h1);
 h2_std = std(h2);
-fprintf("Uncertainty of h1: %f\n", h1_std);
-fprintf("Uncertainty of h2: %f\n", h2_std);
+fprintf("Uncertainty of h1: %fcm\n", h1_std);
+fprintf("Uncertainty of h2: %fcm\n", h2_std);
 
 e = sqrt(h2 ./ h1);
 e_std = std(e);
