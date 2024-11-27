@@ -6,14 +6,14 @@ n = length(X);
 
 % Helper function at the bottom
 [e_i_star, b0, b1] = calculateStatistics(X, Y);
-Y_leastSquares = b0 + b1*X;
+Y_hat = b0 + b1*X;
 
 % Scatter plot & regression line
 figure(1);
 subplot(2, 1, 1);
 scatter(X, Y);
 hold on;
-plot(X, Y_leastSquares)
+plot(X, Y_hat)
 title("Scatter plot and regression line");
 
 % Display diagnostic plot (to check if linear model is not the best)
@@ -40,13 +40,13 @@ for i = 1:4
     % Y_line will be used to display the regression line in the original
     % scatter plot
     switch i
-        case 1
+        case 1 % Exponential
             Y_line = exp(b0) * exp(b1 * X);
-        case 2
+        case 2 % Power
             Y_line = exp(b0) * X.^b1;
-        case 3
+        case 3 % Logarithmic
             Y_line = b0 + b1 * log(X);
-        case 4
+        case 4 % Inverse
             Y_line = b0 + b1./X;
     end
 
@@ -82,11 +82,23 @@ function [e_i_star, b0, b1] = calculateStatistics(X, Y)
     
     b1 = cov_XY / var_X;
     b0 = mean(Y) - b1 * mean(X);
-    Y_leastsquares = b0 + b1*X;
+    Y_hat = b0 + b1*X;
     
-    e_i = Y - Y_leastsquares;
+    e_i = Y - Y_hat;
     e_i_star = e_i / sqrt(var_e);
 end
+
+% ---------------------------------------
+% Part b
+
+x0 = 25;
+fprintf("Assuming that exponential regression is the best:\n\n");
+
+[~, b0, b1] = calculateStatistics(X, log(Y));
+y0 = exp(b0) * exp(b1 * x0);
+
+fprintf("The usability percentage of the tire that is used for 25000km is:\n%.1f\n", y0);
+
 
 
     
